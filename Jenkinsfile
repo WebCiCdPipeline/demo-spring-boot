@@ -14,6 +14,7 @@ properties([
     ])
 ])
 node {
+    stage('checkout'){
     git branch: "${params.BRANCH}", url:  'https://github.com/WebCiCdPipeline/demo-spring-boot.git'
        
     }
