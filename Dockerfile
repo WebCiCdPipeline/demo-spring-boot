@@ -1,4 +1,4 @@
-FROM adoptopenjre:11
+FROM adoptopenjdk:11-jre-hotspot
 ARG ARG JAR_FILE=target/*.jar
 COPY ${JAR_FILE} app.jar
 ENTRYPOINT ["java", "-jar", "/app.jar"]
