@@ -1,14 +1,15 @@
 node {
     def mvnHome
-    stage('Preparation') { // for display purposes
+    stage('checkout') { // for display purposes
         // Get some code from a GitHub repository
-        git 'https://github.com/jglick/simple-maven-project-with-tests.git'
-        // Get the Maven tool.
+        git 'https://github.com/WebCiCdPipeline/demo-spring-boot.git'
+       
+    }
+    stage('Build') {
+         // Get the Maven tool.
         // ** NOTE: This 'M3' Maven tool must be configured
         // **       in the global configuration.
         mvnHome = tool 'M3'
-    }
-    stage('Build') {
         // Run the maven build
         withEnv(["MVN_HOME=$mvnHome"]) {
             if (isUnix()) {
