@@ -2,7 +2,7 @@ node {
     def mvnHome
     stage('checkout') { // for display purposes
         // Get some code from a GitHub repository
-       // git 'https://github.com/WebCiCdPipeline/demo-spring-boot.git'
+       git 'https://github.com/WebCiCdPipeline/demo-spring-boot.git#master'
        
     }
     docker.image('maven:3-alpine').inside('-v $HOME/.m2:/root/.m2') {
