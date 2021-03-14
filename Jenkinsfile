@@ -2,16 +2,7 @@
 
 node {
     stage('checkout'){
-    git branch: gitParameter(branch: '',
-                     branchFilter: 'origin/(.*)',
-                     defaultValue: 'main',
-                     description: '',
-                     name: 'BRANCH',
-                     quickFilterEnabled: false,
-                     selectedValue: 'NONE',
-                     sortMode: 'NONE',
-                     tagFilter: '*',
-                     type: 'PT_BRANCH'), url:  'https://github.com/WebCiCdPipeline/demo-spring-boot.git'
+    git branch: 'main', url:  'https://github.com/WebCiCdPipeline/demo-spring-boot.git'
        
     }
     docker.image('maven:3-alpine').inside('-v $HOME/.m2:/root/.m2') {
