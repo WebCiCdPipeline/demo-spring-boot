@@ -1,7 +1,8 @@
 
-properties([
-    parameters([
-        gitParameter(branch: '',
+
+node {
+    stage('checkout'){
+    git branch: gitParameter(branch: '',
                      branchFilter: 'origin/(.*)',
                      defaultValue: 'main',
                      description: '',
@@ -10,12 +11,7 @@ properties([
                      selectedValue: 'NONE',
                      sortMode: 'NONE',
                      tagFilter: '*',
-                     type: 'PT_BRANCH')
-    ])
-])
-node {
-    stage('checkout'){
-    git branch: "$params.BRANCH", url:  'https://github.com/WebCiCdPipeline/demo-spring-boot.git'
+                     type: 'PT_BRANCH'), url:  'https://github.com/WebCiCdPipeline/demo-spring-boot.git'
        
     }
     docker.image('maven:3-alpine').inside('-v $HOME/.m2:/root/.m2') {
