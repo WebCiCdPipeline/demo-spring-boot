@@ -1,8 +1,22 @@
+properties([
+    parameters([
+        gitParameter(branch: '',
+                     branchFilter: 'origin/(.*)',
+                     defaultValue: 'main',
+                     description: '',
+                     name: 'BRANCH',
+                     quickFilterEnabled: false,
+                     selectedValue: 'NONE',
+                     sortMode: 'NONE',
+                     tagFilter: '*',
+                     type: 'PT_BRANCH')
+    ])
+])
 node {
     def mvnHome
     stage('checkout') { // for display purposes
         // Get some code from a GitHub repository
-       git 'https://github.com/WebCiCdPipeline/demo-spring-boot.git'
+       git branch: "${params.BRANCH}", url:  'https://github.com/WebCiCdPipeline/demo-spring-boot.git'
        
     }
     docker.image('maven:3-alpine').inside('-v $HOME/.m2:/root/.m2') {
