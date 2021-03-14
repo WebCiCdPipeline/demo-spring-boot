@@ -14,7 +14,7 @@ properties([
     ])
 ])
 node {
-    git branch: "${params.BRANCH}",, url:  'https://github.com/WebCiCdPipeline/demo-spring-boot.git'
+    git branch: "${params.BRANCH}", url:  'https://github.com/WebCiCdPipeline/demo-spring-boot.git'
        
     }
     docker.image('maven:3-alpine').inside('-v $HOME/.m2:/root/.m2') {
