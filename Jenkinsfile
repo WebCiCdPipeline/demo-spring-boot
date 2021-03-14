@@ -5,7 +5,7 @@ node {
     git branch: 'main', url:  'https://github.com/WebCiCdPipeline/demo-spring-boot.git'
        
     }
-    docker.image('maven:3-alpine').inside('-v $HOME/.m2:/root/.m2') {
+    docker.image('docker-maven:adoptopenjdk-11').inside('-v $HOME/.m2:/root/.m2') {
         stage('Build') {
             sh 'mvn -B clean install'
         }
