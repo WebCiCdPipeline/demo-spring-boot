@@ -10,6 +10,12 @@ node {
             sh 'mvn -B clean install'
         }
     }
+    stage('Build image') {
+        /* This builds the actual image; synonymous to
+         * docker build on the command line */
+
+        app = docker.build("getintodevops/hellonode")
+    }
     stage('Results') {
         junit '**/target/surefire-reports/TEST-*.xml'
         archiveArtifacts 'target/*.jar'
